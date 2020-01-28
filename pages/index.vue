@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div>
-      <ul>
+      <SelectRosen :rosen-list="rosen" />
+      <!-- <Rosen /> -->
+      <!-- <ul>
         <li v-for="rosen in rosen" :key="rosen.id">
           <button @click.prevent="get_data(rosen.id)">
             {{ rosen.name }}
@@ -11,7 +13,7 @@
       {{ data }}
       <ul>
         <li v-for="item in data.rosen">{{ item.id }}:{{ item.name }}</li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </template>
@@ -19,10 +21,14 @@
 <script>
 import Vue from 'vue'
 import VueJsonp from 'vue-jsonp'
+import SelectRosen from '~/components/SelectRosen.vue'
+
 Vue.use(VueJsonp)
 
 export default {
-  components: {},
+  components: {
+    SelectRosen
+  },
   data: () => {
     return {
       rosen: [
@@ -112,10 +118,12 @@ export default {
   // },
   methods: {
     async get_data(id) {
-      const json = await this.$jsonp('/api/rosenidLookup.php', {
+      const json = await this.$jsonp('/api/busLookup.php', {
+        busid: 1,
         callbackName: 'get'
       })
       console.log(id)
+      console.log(json)
       this.data = json
       //   this.$jsonp('/api/busstopLookup.php', {
       //     params: {
