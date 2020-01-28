@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="menu-area">
-      <Button v-for="rosen in rosenList" :name="rosen.name" />
+      <Button
+        v-for="rosen in rosenList"
+        :name="rosen.name"
+        :color="rosen.color"
+      />
       <!-- <div v-for="rosen in rosenList">{{ rosen.name }}</div> -->
     </div>
   </div>

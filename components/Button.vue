@@ -1,5 +1,5 @@
 <template>
-  <button @click.prevent="get">
+  <button @click.prevent="get" :style="{ backgroundColor: color }">
     {{ name }}
   </button>
 </template>
@@ -10,6 +10,10 @@ export default {
     name: {
       type: String,
       required: true
+    },
+    color: {
+      type: String,
+      required: true
     }
   }
 }
@@ -18,7 +22,6 @@ export default {
 <style>
 button {
   height: 80px;
-  min-width: 100px;
-  background-color: aqua;
+  min-width: 60px;
 }
 </style>
