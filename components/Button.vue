@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 button {
   height: 80px;
   min-width: 60px;
