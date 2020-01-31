@@ -14,6 +14,12 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
+    script: [
+      {
+        src:
+              'https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPTY1Ym53eDJiWXBjUyZzPWNvbnN1bWVyc2VjcmV0Jng9MWI-'
+      }
+    ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
