@@ -173,7 +173,7 @@ footer {
   font-size: 0.75rem;
   padding-top: 10px;
   height: 70px;
-  background-color: #bbb;
+  background-color: #FF6699;
   text-align: center;
 }
 </style>

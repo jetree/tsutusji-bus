@@ -10,7 +10,7 @@
 
 <style scoped>
 header {
-  background-color: #333;
+  background-color: #FF6699;
 }
 .container {
   margin: 0 auto;
