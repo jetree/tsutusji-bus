@@ -124,38 +124,6 @@ export default {
       ],
       data: ''
     }
-  },
-  // async mounted() {
-  //   const json = await this.$jsonp('/api/busstopLookup.php', {
-  //     rosenid: 1,
-  //     callbackName: 'get'
-  //   })
-  //   console.log(json)
-  //   this.data = json
-  // },
-  methods: {
-    async get_data (id) {
-      const json = await this.$jsonp('/api/busLookup.php', {
-        busid: 1,
-        callbackName: 'get'
-      })
-      console.log(id)
-      console.log(json)
-      this.data = json
-      //   this.$jsonp('/api/busstopLookup.php', {
-      //     params: {
-      //       rosenid: 2
-      //     }
-      //   })
-      //     .then((json) => {
-      //       console.log(json)
-      //       this.data = json
-      //     })
-      //     .catch((err) => {
-      //       console.log(err)
-      //       // エラーの時
-      //     })
-    }
   }
 }
 </script>

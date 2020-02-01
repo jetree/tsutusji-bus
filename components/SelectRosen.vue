@@ -2,7 +2,10 @@
   <div>
     <div class="menu-area">
       <Button
+        @click.prevent="get"
         v-for="rosen in rosenList"
+        :id="rosen.id"
+        :key="rosen.id"
         :name="rosen.name"
         :color="rosen.color"
       />
