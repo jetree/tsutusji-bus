@@ -1,5 +1,5 @@
 <template>
-  <button @click.prevent="get_data(id)" :style="{ backgroundColor: color }">
+  <button @click.prevent="get_busstop" :style="{ backgroundColor: color }">
     {{ name }}
   </button>
 </template>
@@ -26,14 +26,13 @@ export default {
     }
   },
   methods: {
-    async get_data (id) {
-      const json = await this.$jsonp('/api/busLookup.php', {
-        busid: id,
+    async get_busstop () {
+      const json = await this.$jsonp('/api/busstopLookup.php', {
+        rosenid: this.id,
         callbackName: 'get'
       })
-      console.log(id)
       console.log(json)
-      this.data = json
+      this.$store.dispatch('bus/get_busstop', json)
     }
   }
 }
