@@ -15,8 +15,8 @@ export default {
   },
   data: () => {
     return {
-      longitude: 35.943302,
-      latitude: 136.188187
+      longitude: 136.188187,
+      latitude: 35.943302
     }
   }
 }
