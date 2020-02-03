@@ -1,7 +1,7 @@
 export const state = () => ({
-  rosen_data: '',
-  longitude: 35.943302,
-  latitude: 136.188187
+  rosen_data: null,
+  longitude: 136.188187,
+  latitude: 35.94330
 })
 
 export const mutations = {
