@@ -1,8 +1,5 @@
 <template>
   <div>
-    <button @click.prevent="set_busstop_icon()">
-      click
-    </button>
     <div id="map" style="max-width:800px; height:70vh" />
   </div>
 </template>
