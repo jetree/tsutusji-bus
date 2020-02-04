@@ -34,7 +34,11 @@ export default {
   },
   methods: {
     createMap () {
-      this.ymap = new Y.Map('map')
+      this.ymap = new Y.Map('map', {
+        configure: {
+          mapType: Y.Map.TYPE.SMARTPHONE
+        }
+      })
       this.ymap.drawMap(new Y.LatLng(this.latitude, this.longitude), 14, Y.LayerSetId.NORMAL)
     },
     set_busstop_icon () {
