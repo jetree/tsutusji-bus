@@ -27,6 +27,12 @@ export default {
       return this.$store.getters['bus/busstop']
     }
   },
+  watch: {
+    busstop (val, old) {
+      // console.log('watch', val)
+      this.set_busstop_icon()
+    }
+  },
   mounted () {
     this.createMap()
   },
