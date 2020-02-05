@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ bus }}
     <div id="map" style="max-width:800px; height:70vh" />
   </div>
 </template>
@@ -16,7 +17,22 @@ export default {
   },
   data: () => {
     return {
-      ymap: ''
+      ymap: '',
+      bus_marker: [],
+      bus: {
+        1: {
+          latitude: 35.94330,
+          longitude: 136.188187
+        },
+        5: {
+          latitude: 0,
+          longitude: 0
+        },
+        6: {
+          latitude: '',
+          longitude: ''
+        }
+      }
     }
   },
   computed: {
@@ -27,10 +43,20 @@ export default {
   watch: {
     busstop (val, old) {
       this.set_busstop_icon()
+    },
+    bus: {
+      handler: (val, old) => {
+        console.log(val)
+        set_bus_icon(1)
+      },
+      deep: true
     }
   },
   mounted () {
     this.createMap()
+    this.interval(1)
+    // this.interval(5)
+    this.set_bus_icon(1)
   },
   methods: {
     createMap () {
@@ -67,6 +93,28 @@ export default {
         new Y.LatLngBounds(
           new Y.LatLng(pointBLatitude, pointBLongitude),
           new Y.LatLng(pointALatitude, pointALongitude)), Y.LayerSetId.NORMAL)
+    },
+    set_bus_icon (busid) {
+      this.bus_marker = new Y.Marker(new Y.LatLng(this.bus[busid].latitude, this.bus[busid].longitude))
+      console.log(this.bus_marker)
+      this.ymap.addFeature(this.bus_marker)
+    },
+    // async get_bus_position (id) {
+    get_bus_position (id) {
+      // const json = await this.$jsonp('/api/busLookup.php', {
+      //   busid: id,
+      //   callbackName: 'get_' + id
+      // })
+      // this.bus[id].latitude = json.latitude
+      // this.bus[id].longitude = json.longitude
+      this.bus[id].latitude += 0.002
+      this.bus[id].longitude += 0.002
+      // console.log(id)
+    },
+    interval (id) {
+      setInterval(() => {
+        this.get_bus_position(id)
+      }, 5000)
     }
   }
 }
