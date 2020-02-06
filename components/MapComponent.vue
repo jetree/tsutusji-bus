@@ -1,6 +1,13 @@
 <template>
   <div>
-    {{ bus }}
+    {{ bus }}<br>
+    {{ busMarker }}
+    <button @click.prevent="set_bus_icon(1)">
+      click
+    </button>
+    <button @click.prevent="move_bus_icon(1)">
+      click
+    </button>
     <div id="map" style="max-width:800px; height:70vh" />
   </div>
 </template>
@@ -18,11 +25,20 @@ export default {
   data: () => {
     return {
       ymap: '',
-      bus_marker: [],
+      busMarker: {},
       bus: {
         1: {
-          latitude: 35.94330,
-          longitude: 136.188187
+          isRunning: true,
+          datetime: '20121111110057',
+          busid: '4',
+          rosenid: '1',
+          binid: '6',
+          latitude: 35.9463122814615,
+          longitude: 136.188002291092,
+          speed: 8.00399208068848,
+          direction: 260.027038574219,
+          destination: '神明駅',
+          isdelay: false
         },
         5: {
           latitude: 0,
@@ -43,20 +59,20 @@ export default {
   watch: {
     busstop (val, old) {
       this.set_busstop_icon()
-    },
-    bus: {
-      handler: (val, old) => {
-        console.log(val)
-        set_bus_icon(1)
-      },
-      deep: true
     }
+  // bus: {
+  //   handler: (val, old) => {
+  //     console.log(val)
+  //     set_bus_icon(1)
+  //   },
+  //   deep: true
+  // }
   },
   mounted () {
     this.createMap()
-    this.interval(1)
+    // this.interval(1)
     // this.interval(5)
-    this.set_bus_icon(1)
+    // this.set_bus_icon(1)
   },
   methods: {
     createMap () {
@@ -95,9 +111,19 @@ export default {
           new Y.LatLng(pointALatitude, pointALongitude)), Y.LayerSetId.NORMAL)
     },
     set_bus_icon (busid) {
-      this.bus_marker = new Y.Marker(new Y.LatLng(this.bus[busid].latitude, this.bus[busid].longitude))
-      console.log(this.bus_marker)
-      this.ymap.addFeature(this.bus_marker)
+      const bus = new Y.Marker(new Y.LatLng(this.bus[busid].latitude, this.bus[busid].longitude))
+      console.log(bus)
+      bus.id = busid
+      console.log(bus)
+      // this.busMarker = bus
+      this.ymap.addFeature(bus)
+    },
+    move_bus_icon (busid) {
+      const busMarker = this.ymap.getFeatures().find((Features) => {
+        return (Features.id === busid)
+      })
+      console.log(busMarker)
+      this.ymap.removeFeature(busMarker)
     },
     // async get_bus_position (id) {
     get_bus_position (id) {
