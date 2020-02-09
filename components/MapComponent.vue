@@ -70,9 +70,17 @@ export default {
   },
   mounted () {
     this.createMap()
-    // this.interval(1)
-    // this.interval(5)
-    // this.set_bus_icon(1)
+    this.interval(1)
+    this.interval(2)
+    this.interval(3)
+    this.interval(4)
+    this.interval(5)
+    this.interval(6)
+    this.interval(7)
+    this.interval(8)
+    this.interval(9)
+    this.interval(10)
+    this.set_bus_icon(1)
   },
   methods: {
     createMap () {
@@ -120,27 +128,23 @@ export default {
     },
     move_bus_icon (busid) {
       const busMarker = this.ymap.getFeatures().find((Features) => {
-        return (Features.id === busid)
+        return (Features.busid === busid)
       })
       console.log(busMarker)
       this.ymap.removeFeature(busMarker)
     },
-    // async get_bus_position (id) {
-    get_bus_position (id) {
-      // const json = await this.$jsonp('/api/busLookup.php', {
-      //   busid: id,
-      //   callbackName: 'get_' + id
-      // })
-      // this.bus[id].latitude = json.latitude
-      // this.bus[id].longitude = json.longitude
-      this.bus[id].latitude += 0.002
-      this.bus[id].longitude += 0.002
-      // console.log(id)
+    async get_bus_position (busid) {
+      const json = await this.$jsonp('/api/busLookup.php', {
+        busid,
+        callbackName: 'get_' + busid
+      })
+      this.bus[busid] = json
+      console.log(busid, json)
     },
-    interval (id) {
+    interval (busid) {
       setInterval(() => {
-        this.get_bus_position(id)
-      }, 5000)
+        this.get_bus_position(busid)
+      }, 6000)
     }
   }
 }
