@@ -34,7 +34,8 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/vue-jsonp'
+    '~/plugins/vue-jsonp',
+    { src: '~plugins/ga.js', mode: 'client' }
   ],
   /*
    ** Nuxt.js dev-modules
