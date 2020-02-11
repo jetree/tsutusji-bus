@@ -19,6 +19,9 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'no-undef': 'off'
+    'no-undef': 'off',
+    'object-shorthand':
+      -1
+      -always
   },
 }
