@@ -1,13 +1,13 @@
 <template>
   <div>
-    {{ bus }}<br>
+    <!-- {{ bus }}<br>
     {{ busMarker }}
     <button @click.prevent="set_bus_icon(1)">
       click
     </button>
     <button @click.prevent="remove_bus_icon(1)">
       click
-    </button>
+    </button> -->
     <div id="map" style="max-width:800px; height:70vh" />
   </div>
 </template>
@@ -59,7 +59,7 @@ export default {
   },
   watch: {
     busstop (val, old) {
-      console.log(this)
+      // console.log(this)
       this.set_busstop_icon()
     },
     // bus (val, old) {
@@ -68,11 +68,47 @@ export default {
     //   this.remove_bus_icon(busid)
     //   this.set_bus_icon(busid)
     // }
-    'bus.3' (val) {
+    'bus.1' (val) {
       // console.log('watch', val)
       // console.log('watch', this)
+      this.remove_bus_icon(1)
+      this.set_bus_icon(1)
+    },
+    'bus.2' (val) {
+      this.remove_bus_icon(2)
+      this.set_bus_icon(2)
+    },
+    'bus.3' (val) {
       this.remove_bus_icon(3)
       this.set_bus_icon(3)
+    },
+    'bus.4' (val) {
+      this.remove_bus_icon(4)
+      this.set_bus_icon(4)
+    },
+    'bus.5' (val) {
+      this.remove_bus_icon(5)
+      this.set_bus_icon(5)
+    },
+    'bus.6' (val) {
+      this.remove_bus_icon(6)
+      this.set_bus_icon(6)
+    },
+    'bus.7' (val) {
+      this.remove_bus_icon(7)
+      this.set_bus_icon(7)
+    },
+    'bus.8' (val) {
+      this.remove_bus_icon(8)
+      this.set_bus_icon(8)
+    },
+    'bus.9' (val) {
+      this.remove_bus_icon(9)
+      this.set_bus_icon(9)
+    },
+    'bus.10' (val) {
+      this.remove_bus_icon(10)
+      this.set_bus_icon(10)
     }
     // bus: {
     //   // handler: (val, old) => {
@@ -87,16 +123,16 @@ export default {
   },
   mounted () {
     this.createMap()
-    // this.interval(1)
-    // this.interval(2)
+    this.interval(1)
+    this.interval(2)
     this.interval(3)
-    // this.interval(4)
-    // this.interval(5)
-    // this.interval(6)
-    // this.interval(7)
-    // this.interval(8)
-    // this.interval(9)
-    // this.interval(10)
+    this.interval(4)
+    this.interval(5)
+    this.interval(6)
+    this.interval(7)
+    this.interval(8)
+    this.interval(9)
+    this.interval(10)
     // this.set_bus_icon(1)
   },
   methods: {
@@ -136,12 +172,12 @@ export default {
           new Y.LatLng(pointALatitude, pointALongitude)), Y.LayerSetId.NORMAL)
     },
     set_bus_icon (busid) {
-      console.log(this.bus[busid])
+      // console.log(this.bus[busid])
       if (this.bus[busid] === undefined) {
         return
       }
       const bus = new Y.Marker(new Y.LatLng(this.bus[busid].latitude, this.bus[busid].longitude))
-      console.log('bus', bus)
+      // console.log('bus', bus)
       bus.id = busid
       this.ymap.addFeature(bus)
     },
@@ -161,7 +197,7 @@ export default {
         callbackName: 'get_' + busid
       })
       // console.log(busid, json)
-      console.log(busid, json)
+      // console.log(busid, json)
       // console.log(busid, Object.keys(json).length)
       // if (Object.keys(json).length === 0) {
       //   this.bus[busid] = {}
