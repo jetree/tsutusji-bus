@@ -140,7 +140,7 @@ footer {
 .footer {
   font-size: 0.75rem;
   padding-top: 10px;
-  height: 70px;
+  height: 50px;
   background-color: #FF6699;
   text-align: center;
 }

@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .container {
   margin: 10px auto;
   max-width: 800px;
