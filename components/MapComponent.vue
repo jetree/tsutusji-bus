@@ -5,7 +5,7 @@
     <button @click.prevent="set_bus_icon(1)">
       click
     </button>
-    <button @click.prevent="move_bus_icon(1)">
+    <button @click.prevent="remove_bus_icon(1)">
       click
     </button>
     <div id="map" style="max-width:800px; height:70vh" />
@@ -40,14 +40,15 @@ export default {
           destination: '神明駅',
           isdelay: false
         },
-        5: {
-          latitude: 0,
-          longitude: 0
-        },
-        6: {
-          latitude: '',
-          longitude: ''
-        }
+        2: {},
+        3: {},
+        4: {},
+        5: {},
+        6: {},
+        7: {},
+        8: {},
+        9: {},
+        10: {}
       }
     }
   },
@@ -58,29 +59,45 @@ export default {
   },
   watch: {
     busstop (val, old) {
+      console.log(this)
       this.set_busstop_icon()
+    },
+    // bus (val, old) {
+    //   const busid = old.busid
+    //   console.log(old)
+    //   this.remove_bus_icon(busid)
+    //   this.set_bus_icon(busid)
+    // }
+    'bus.3' (val) {
+      // console.log('watch', val)
+      // console.log('watch', this)
+      this.remove_bus_icon(3)
+      this.set_bus_icon(3)
     }
-  // bus: {
-  //   handler: (val, old) => {
-  //     console.log(val)
-  //     set_bus_icon(1)
-  //   },
-  //   deep: true
-  // }
+    // bus: {
+    //   // handler: (val, old) => {
+    //   handler: function (val, old) {
+    //     // const busid = old.busidz
+    //     console.log(old)
+    //     console.log(this)
+    //     // this.set_bus_icon(busid)
+    //   },
+    //   deep: true
+    // }
   },
   mounted () {
     this.createMap()
-    this.interval(1)
-    this.interval(2)
+    // this.interval(1)
+    // this.interval(2)
     this.interval(3)
-    this.interval(4)
-    this.interval(5)
-    this.interval(6)
-    this.interval(7)
-    this.interval(8)
-    this.interval(9)
-    this.interval(10)
-    this.set_bus_icon(1)
+    // this.interval(4)
+    // this.interval(5)
+    // this.interval(6)
+    // this.interval(7)
+    // this.interval(8)
+    // this.interval(9)
+    // this.interval(10)
+    // this.set_bus_icon(1)
   },
   methods: {
     createMap () {
@@ -119,18 +136,23 @@ export default {
           new Y.LatLng(pointALatitude, pointALongitude)), Y.LayerSetId.NORMAL)
     },
     set_bus_icon (busid) {
+      console.log(this.bus[busid])
+      if (this.bus[busid] === undefined) {
+        return
+      }
       const bus = new Y.Marker(new Y.LatLng(this.bus[busid].latitude, this.bus[busid].longitude))
-      console.log(bus)
+      console.log('bus', bus)
       bus.id = busid
-      console.log(bus)
-      // this.busMarker = bus
       this.ymap.addFeature(bus)
     },
-    move_bus_icon (busid) {
-      const busMarker = this.ymap.getFeatures().find((Features) => {
-        return (Features.busid === busid)
+    remove_bus_icon (busid) {
+      const busMarker = this.ymap.getFeatures().find((Feature) => {
+        return (Feature.id === busid)
       })
-      console.log(busMarker)
+      // console.log('sakujo', busMarker)
+      if(busMarker === undefined){
+        return
+      }
       this.ymap.removeFeature(busMarker)
     },
     async get_bus_position (busid) {
@@ -138,8 +160,13 @@ export default {
         busid,
         callbackName: 'get_' + busid
       })
-      this.bus[busid] = json
+      // console.log(busid, json)
       console.log(busid, json)
+      // console.log(busid, Object.keys(json).length)
+      // if (Object.keys(json).length === 0) {
+      //   this.bus[busid] = {}
+      // }
+      this.bus[busid] = json
     },
     interval (busid) {
       setInterval(() => {
