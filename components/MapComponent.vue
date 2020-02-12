@@ -122,6 +122,7 @@ export default {
     // }
   },
   mounted () {
+    this.get_window_height()
     this.createMap()
     this.interval(1)
     this.interval(2)
@@ -208,6 +209,15 @@ export default {
       setInterval(() => {
         this.get_bus_position(busid)
       }, 6000)
+    },
+    get_window_height(){
+      let height = window.innerHeight;
+      const map = document.getElementById('map')
+      console.log('height', height)
+      console.log('map', map)
+      height  = height - 190
+      console.log('height', height)
+      map.style.height = height +'px'
     }
   }
 }
@@ -216,7 +226,7 @@ export default {
 $header-height: 50px;
 $footer-height: 140px;
 
-#map{
-  height: calc(100vh - 190px);
-}
+/* #map{
+  /* height: calc(100vh - 190px); */
+/* } */ 
 </style>
