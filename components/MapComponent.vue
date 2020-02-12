@@ -8,7 +8,7 @@
     <button @click.prevent="remove_bus_icon(1)">
       click
     </button> -->
-    <div id="map" style="max-width:800px; height:70vh" />
+    <div id="map" style="max-width:800px" />
   </div>
 </template>
 
@@ -212,4 +212,11 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+$header-height: 50px;
+$footer-height: 140px;
 
+#map{
+  height: calc(100vh - 190px);
+}
+</style>

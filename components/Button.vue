@@ -43,5 +43,6 @@ button {
   height: 80px;
   min-width: 60px;
   margin: 5px;
+  border-radius: 5px;
 }
 </style>

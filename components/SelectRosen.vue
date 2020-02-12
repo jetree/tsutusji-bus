@@ -34,5 +34,6 @@ export default {
 .menu-area {
   display: flex;
   overflow-x: scroll;
+  background-color: rgb(250, 140, 176);
 }
 </style>
