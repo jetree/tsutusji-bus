@@ -66,4 +66,8 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+
+.yolp-ymapbanner{
+    display: none;
+  }
 </style>
