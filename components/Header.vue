@@ -11,6 +11,7 @@
 <style scoped>
 header {
   background-color: #FF6699;
+  height: 70px;
 }
 .container {
   margin: 0 auto;

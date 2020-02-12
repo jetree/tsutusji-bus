@@ -23,8 +23,12 @@ export default {
 </script>
 
 <style scoped>
+$header-height: 70px
+$footer-height: calc(50 + 80 + 10)px
+
 .container {
-  margin: 10px auto;
+  margin: 0px auto;
+  height: calc(100% - $header-height - $footer-height);
   max-width: 800px;
   background-color: #ddd;
 }

@@ -42,5 +42,6 @@ export default {
 button {
   height: 80px;
   min-width: 60px;
+  margin: 5px;
 }
 </style>
