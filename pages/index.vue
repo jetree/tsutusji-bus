@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 $header-height: 70px
 $footer-height: calc(50 + 80 + 10)px
 
