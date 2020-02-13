@@ -15,7 +15,12 @@ export default {
         hid: 'description',
         name: 'description',
         content: process.env.npm_package_description || ''
-      }
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: /*OGP 画像への絶対パス*/"/image.png"
+      },
     ],
     script: [
       {
