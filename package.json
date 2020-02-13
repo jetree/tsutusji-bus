@@ -1,7 +1,7 @@
 {
-  "name": "bus",
+  "name": "つつじバス現在地 マップ",
   "version": "1.0.0",
-  "description": "My magnificent Nuxt.js project",
+  "description": "福井県鯖江市のコミュニティバス「つつじバス」がいまどこにいるか、マップ上で分かるアプリケーションです",
   "author": "",
   "private": true,
   "scripts": {
