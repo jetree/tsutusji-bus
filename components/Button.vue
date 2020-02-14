@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     async get_busstop () {
-      const json = await this.$jsonp('/api/busstopLookup.php', {
+      const json = await this.$jsonp('http://tutujibus.com/busstopLookup.php', {
         rosenid: this.id,
         callbackName: 'get'
       })

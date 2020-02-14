@@ -61,12 +61,7 @@ export default {
     '@nuxtjs/proxy'
   ],
   proxy: {
-    '/api': {
-      target: 'http://tutujibus.com/',
-      pathRewrite: {
-        '^/api': '/'
-      }
-    }
+
   },
   /*
    ** Axios module configuration

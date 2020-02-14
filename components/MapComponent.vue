@@ -193,7 +193,7 @@ export default {
       this.ymap.removeFeature(busMarker)
     },
     async get_bus_position (busid) {
-      const json = await this.$jsonp('/api/busLookup.php', {
+      const json = await this.$jsonp('http://tutujibus.com/busLookup.php', {
         busid,
         callbackName: 'get_' + busid
       })
@@ -228,5 +228,5 @@ $footer-height: 140px;
 
 /* #map{
   /* height: calc(100vh - 190px); */
-/* } */ 
+/* } */
 </style>
