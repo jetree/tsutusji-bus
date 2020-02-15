@@ -58,10 +58,14 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    'nuxt-fontawesome',
   ],
   proxy: {
 
+  },
+  fontawesome:{
+    component: 'fa'
   },
   /*
    ** Axios module configuration

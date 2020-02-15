@@ -14,8 +14,12 @@
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/vue-fontawesome": "^0.1.9",
     "@nuxtjs/axios": "^5.3.6",
     "nuxt": "^2.0.0",
+    "nuxt-fontawesome": "^0.4.0",
     "vue-jsonp": "^0.1.8"
   },
   "devDependencies": {

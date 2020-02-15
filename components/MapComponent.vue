@@ -1,18 +1,20 @@
 <template>
   <div>
-    <!-- {{ bus }}<br>
-    {{ busMarker }}
-    <button @click.prevent="set_bus_icon(1)">
-      click
-    </button>
-    <button @click.prevent="remove_bus_icon(1)">
-      click
-    </button> -->
-    <div id="map" style="max-width:800px" />
+    <!-- {{ bus }}<br> -->
+    <!-- {{ busMarker }} -->
+    
+    <div class="container">
+      <button @click.prevent="getCurrentPosition" id="getCurrentPositionButton">
+        <fa :icon="faLocationArrow" />
+      </button>
+      <div id="map" style="max-width:800px" />
+    </div>
   </div>
 </template>
 
 <script>
+import { faLocationArrow } from '@fortawesome/free-solid-svg-icons'
+
 export default {
   props: {
     longitude: {
@@ -55,6 +57,9 @@ export default {
   computed: {
     busstop () {
       return this.$store.getters['bus/busstop']
+    },
+    faLocationArrow(){
+      return faLocationArrow
     }
   },
   watch: {
@@ -218,6 +223,39 @@ export default {
       height  = height - 190
       console.log('height', height)
       map.style.height = height +'px'
+    },
+    getCurrentPosition(){
+      if( !navigator.geolocation ){
+        return
+        // alert( "あなたの端末では、現在位置を取得できません。" )
+      }
+      // console.log(this)
+      const self = this
+      const optionObj = {
+        "enableHighAccuracy": false ,
+        "timeout": 3000 ,
+        "maximumAge": 5000 ,
+      }
+      // エラーコードのメッセージを定義
+      const errorMessage = {
+            0: "原因不明のエラーが発生しました…。" ,
+            1: "位置情報の取得が許可されませんでした…。" ,
+            2: "電波状況などで位置情報が取得できませんでした…。" ,
+            3: "位置情報の取得に時間がかかり過ぎてタイムアウトしました…。" ,
+          } 
+      navigator.geolocation.getCurrentPosition(
+        // [第1引数] 取得に成功した場合の関数
+        function(position){
+          const data = position.coords
+          self.ymap.panTo(new Y.LatLng(data.latitude, data.longitude), true);
+        },
+        // [第2引数] 取得に失敗した場合の関数
+        function errorFunc( error ){
+        // エラーコードに合わせたエラー内容をアラート表示
+        console.log( errorMessage[error.code] )
+        },
+        optionObj
+        )
     }
   }
 }
@@ -229,4 +267,21 @@ $footer-height: 140px;
 /* #map{
   /* height: calc(100vh - 190px); */
 /* } */
+.container{
+  max-width: 800px;
+  position: relative;
+}
+#getCurrentPositionButton{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 20px;
+  bottom: 30px;
+  color: aliceblue;
+  background: #ef3f98;
+  opacity: 0.8;
+  z-index: 1;
+  font-size: 20px;
+  border-radius: 50%;
+}
 </style>
