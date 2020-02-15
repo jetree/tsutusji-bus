@@ -31,7 +31,7 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: /*OGP 画像への絶対パス*/"/image.png"
+        content: 'https://tsutsujibus.netlify.com/image.png'
       },
     ],
     script: [

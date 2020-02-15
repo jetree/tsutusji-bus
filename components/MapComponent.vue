@@ -281,7 +281,7 @@ $footer-height: 140px;
   background: #ef3f98;
   opacity: 0.8;
   z-index: 1;
-  font-size: 20px;
+  font-size: 16px;
   border-radius: 50%;
 }
 </style>
