@@ -229,7 +229,7 @@ export default {
         return
         // alert( "あなたの端末では、現在位置を取得できません。" )
       }
-      console.log(this)
+      // console.log(this)
       const self = this
       const optionObj = {
         "enableHighAccuracy": false ,
@@ -247,8 +247,6 @@ export default {
         // [第1引数] 取得に成功した場合の関数
         function(position){
           const data = position.coords
-          console.log(data)
-          console.log(self)
           self.ymap.panTo(new Y.LatLng(data.latitude, data.longitude), true);
         },
         // [第2引数] 取得に失敗した場合の関数
