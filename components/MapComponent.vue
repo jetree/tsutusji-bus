@@ -223,6 +223,41 @@ export default {
       height  = height - 190
       console.log('height', height)
       map.style.height = height +'px'
+    },
+    getCurrentPosition(){
+      if( !navigator.geolocation ){
+        return
+        // alert( "あなたの端末では、現在位置を取得できません。" )
+      }
+      console.log(this)
+      const self = this
+      const optionObj = {
+        "enableHighAccuracy": false ,
+        "timeout": 3000 ,
+        "maximumAge": 5000 ,
+      }
+      // エラーコードのメッセージを定義
+      const errorMessage = {
+            0: "原因不明のエラーが発生しました…。" ,
+            1: "位置情報の取得が許可されませんでした…。" ,
+            2: "電波状況などで位置情報が取得できませんでした…。" ,
+            3: "位置情報の取得に時間がかかり過ぎてタイムアウトしました…。" ,
+          } 
+      navigator.geolocation.getCurrentPosition(
+        // [第1引数] 取得に成功した場合の関数
+        function(position){
+          const data = position.coords
+          console.log(data)
+          console.log(self)
+          self.ymap.panTo(new Y.LatLng(data.latitude, data.longitude), true);
+        },
+        // [第2引数] 取得に失敗した場合の関数
+        function errorFunc( error ){
+        // エラーコードに合わせたエラー内容をアラート表示
+        console.log( errorMessage[error.code] )
+        },
+        optionObj
+        )
     }
   }
 }
