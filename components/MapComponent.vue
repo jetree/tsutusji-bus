@@ -2,13 +2,13 @@
   <div>
     <!-- {{ bus }}<br> -->
     <!-- {{ busMarker }} -->
-    <!-- <button @click.prevent="set_bus_icon(1)">
-      click
-    </button> -->
-    <button @click.prevent="getCurrentPosition">
-      <fa :icon="faLocationArrow" />
-    </button>
-    <div id="map" style="max-width:800px" />
+    
+    <div class="container">
+      <button @click.prevent="getCurrentPosition" id="getCurrentPositionButton">
+        <fa :icon="faLocationArrow" />
+      </button>
+      <div id="map" style="max-width:800px" />
+    </div>
   </div>
 </template>
 
@@ -234,4 +234,21 @@ $footer-height: 140px;
 /* #map{
   /* height: calc(100vh - 190px); */
 /* } */
+.container{
+  max-width: 800px;
+  position: relative;
+}
+#getCurrentPositionButton{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 20px;
+  bottom: 30px;
+  color: aliceblue;
+  background: #ef3f98;
+  opacity: 0.8;
+  z-index: 1;
+  font-size: 20px;
+  border-radius: 50%;
+}
 </style>
