@@ -1,18 +1,20 @@
 <template>
   <div>
-    <!-- {{ bus }}<br>
-    {{ busMarker }}
-    <button @click.prevent="set_bus_icon(1)">
-      click
-    </button>
-    <button @click.prevent="remove_bus_icon(1)">
+    <!-- {{ bus }}<br> -->
+    <!-- {{ busMarker }} -->
+    <!-- <button @click.prevent="set_bus_icon(1)">
       click
     </button> -->
+    <button @click.prevent="getCurrentPosition">
+      <fa :icon="faLocationArrow" />
+    </button>
     <div id="map" style="max-width:800px" />
   </div>
 </template>
 
 <script>
+import { faLocationArrow } from '@fortawesome/free-solid-svg-icons'
+
 export default {
   props: {
     longitude: {
@@ -55,6 +57,9 @@ export default {
   computed: {
     busstop () {
       return this.$store.getters['bus/busstop']
+    },
+    faLocationArrow(){
+      return faLocationArrow
     }
   },
   watch: {
