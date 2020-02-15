@@ -14,6 +14,16 @@ export default {
       { hid: 'twitter:card', name: 'twitter:card', content:"summary_large_image"},
       { hid: 'twitter:site', name: 'twitter:site', content:"@doitokatsuki" },
       {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'つつじバスいまどこサービス'
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://tsutsujibus.netlify.com/'
+      },
+      {
         hid: 'description',
         name: 'description',
         content: process.env.npm_package_description || ''
