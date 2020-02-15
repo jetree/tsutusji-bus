@@ -153,7 +153,7 @@ export default {
       const markers = []
       const latitudeList = []
       const longitudeList = []
-      const icon = new Y.Icon('http://tutujibus.com/image/busstop32.png')
+      const icon = new Y.Icon('https://tutujibus.com/image/busstop32.png')
       for (let i = 0; i < this.busstop.length; i++) {
         markers.push(new Y.Marker(new Y.LatLng(this.busstop[i].latitude, this.busstop[i].longitude), { icon }))
         latitudeList.push(this.busstop[i].latitude)
@@ -193,7 +193,7 @@ export default {
       this.ymap.removeFeature(busMarker)
     },
     async get_bus_position (busid) {
-      const json = await this.$jsonp('http://tutujibus.com/busLookup.php', {
+      const json = await this.$jsonp('https://tutujibus.com/busLookup.php', {
         busid,
         callbackName: 'get_' + busid
       })
