@@ -1,8 +1,18 @@
 <template>
   <footer>
-    <div class="container">
-      <SelectRosen :rosen-list="rosen" />
-    </div>
+    <nav class="nav">
+      <div class="container">
+        <ul>
+          <li class="nav-item">
+            <div class="nav-icon" >
+              <fa :icon="faRoute" />
+            </div>
+            <p>路線選択</p>
+          </li>
+        </ul>
+        <!-- <SelectRosen :rosen-list="rosen" /> -->
+      </div>
+    </nav>
     <div class="footer">
       <p>CC BY <a href="https://twitter.com/doitokatsuki">LEE</a></p>
       <p>
@@ -21,12 +31,18 @@
 import Vue from 'vue'
 import VueJsonp from 'vue-jsonp'
 import SelectRosen from '~/components/SelectRosen.vue'
+import { faRoute} from '@fortawesome/free-solid-svg-icons'
 
 Vue.use(VueJsonp)
 
 export default {
   components: {
     SelectRosen
+  },
+  computed:{
+    faRoute(){
+      return faRoute
+    }
   },
   data: () => {
     return {
@@ -128,19 +144,38 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 footer {
   width: 100%;
   position: fixed;
   bottom: 0;
 }
+.nav{
+  background-color: rgb(250, 140, 176);
+  height: 60px;
+  display: flex;
+  ul{
+    padding: 0;
+  }
+  &-item{
+    height: 100%;
+    display: block;
+    list-style: none;
+    text-align: center;
+  }
+  &-icon{
+    font-size: 30px;
+    padding: 0 auto;
+  }
+}
 .container {
+  max-width: 800px;
   margin: 0 auto;
 }
 .footer {
-  font-size: 0.75rem;
+  font-size: 0.60rem;
   padding-top: 10px;
-  height: 50px;
+  height: 40px;
   background-color: #FF6699;
   text-align: center;
 }
