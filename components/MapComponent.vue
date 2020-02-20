@@ -2,9 +2,9 @@
   <div>
     <!-- {{ bus }}<br> -->
     <!-- {{ busMarker }} -->
-    <!-- <button @click.prevent="getBusRoute">
+    <button @click.prevent="getBusRoute">
     click
-    </button> -->
+    </button>
     <div class="container">
       <button @click.prevent="getCurrentPosition" id="getCurrentPositionButton">
         <fa :icon="faLocationArrow" />
@@ -222,7 +222,7 @@ export default {
       const map = document.getElementById('map')
       console.log('height', height)
       console.log('map', map)
-      height  = height - 170
+      height  = height - 150
       console.log('height', height)
       map.style.height = height +'px'
     },
@@ -260,7 +260,7 @@ export default {
         )
     },
     getBusRoute(){
-      let url = "http://www.tutujibus.com/kml3/1.kml"
+      let url = "http://www.tutujibus.com/kml3/13w.kml"
       console.log(url)
       let geoXmlLayer = new Y.GeoXmlLayer(url);
       this.ymap.addLayer(geoXmlLayer);

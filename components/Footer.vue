@@ -1,9 +1,12 @@
 <template>
   <footer>
     <nav class="nav">
+      <div id="overlay" v-show="showModal" @click.prevent="closeModal">
+        <SelectRosenModal :rosen-list="rosen"/>
+      </div>
       <div class="container">
         <ul>
-          <li class="nav-item">
+          <li class="nav-item" @click.prevnt="openModal">
             <div class="nav-icon" >
               <fa :icon="faRoute" />
             </div>
@@ -31,13 +34,15 @@
 import Vue from 'vue'
 import VueJsonp from 'vue-jsonp'
 import SelectRosen from '~/components/SelectRosen.vue'
+import SelectRosenModal from '~/components/SelectRosenModal.vue'
 import { faRoute} from '@fortawesome/free-solid-svg-icons'
 
 Vue.use(VueJsonp)
 
 export default {
   components: {
-    SelectRosen
+    SelectRosen,
+    SelectRosenModal
   },
   computed:{
     faRoute(){
@@ -138,7 +143,16 @@ export default {
           color: '#795548'
         }
       ],
-      data: ''
+      data: '',
+      showModal:false
+    }
+  },
+  methods:{
+    openModal(){
+      this.showModal = true
+    },
+    closeModal(){
+      this.showModal = false
     }
   }
 }
@@ -154,6 +168,18 @@ footer {
   background-color: rgb(250, 140, 176);
   height: 60px;
   display: flex;
+  #overlay{
+    z-index:1;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   ul{
     padding: 0;
   }
