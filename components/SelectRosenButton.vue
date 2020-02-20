@@ -27,7 +27,12 @@ export default {
   },
   methods: {
     get_klm(){
-
+      const klmData = "http://www.tutujibus.com/kml3/" + this.id + ".klm"
+      console.log(klmData)
+      const geoXmlLayer = new Y.GeoXmlLayer(klmData)
+      console.log(geoXmlLayer)
+      this.ymap.addLayer(geoXmlLayer)
+      this.$store.dispatch('bus/get_klm', klmData)
     }
   }
 }
